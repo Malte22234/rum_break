@@ -20,10 +20,23 @@ def huvudmeny():
 
 def losa_pussel():
     print("Du hittar en låst dörr. För att öppna den måste du lösa ett pussel.")
-    print("Vad är summan av 7 + 5?")
+    
+    problem = [
+        ("Vad är 7 + 5?", "12"),
+        ("Vad är 15 - 9?", "6"),
+        ("Vad är gånger av 6 och 7?", "42"),
+        ("Vad är roten ur  36", "6")
+    ]
+    
+    val = random.choice(problem)
+    fråga, rätt_svar = val
+    
+    print(fråga)
     svar = input("Skriv ditt svar: ")
-    if svar == "12":
+    
+    if svar == rätt_svar:
         print("Rätt! Dörren är nu öppen.")
+        input("Tryck på enter för att fortsätta")
         return True
     else:
         print("Fel svar! Du kan inte öppna dörren.")
@@ -34,7 +47,7 @@ def fly_fran_fiende():
     print("Du försöker fly...")
     tarning = random.randint(1, 6)
     print(f"Du slog en {tarning}.")
-    if tarning <= 3:
+    if tarning <= 5:
         print("Du lyckades fly!")
         return True
     else:
@@ -70,7 +83,11 @@ def starta_spelet():
     if spelarens_val == "1":
         print("Du flydde grattis!")
     else:
-        print("Du blev uppäten av en björn med ett svärd.")
+        björn = input("Framför dig står det en björn med ett svärd, vill du fly? Ja nej ").lower()
+        if (björn == "ja"):
+            print("Du lyckades fly och klarade spelet, grattis")
+        else:
+            print("Du dog av svärdet men björnen åt upp dig också.")
 
 # Starta spelet från huvudmenyn
 huvudmeny()
